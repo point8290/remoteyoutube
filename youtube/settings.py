@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 # import django_heroku
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -24,7 +25,7 @@ SECRET_KEY = 'sh+8bvz_vwg+p7!!1^f2b6+3a178+y=vw*q-%qr(7zr)i&j4#)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 ALLOWED_HOSTS = ["remoteyoutube.herokuapp","127.0.0.1"]
 
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
